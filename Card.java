@@ -73,6 +73,13 @@ public class Card {
 		// 1-13
 		if(fromConvert2Suit == "DIAMOND")
 		{
+			// 引いたカードが11, 12, 13の場合、10としてカウントする
+			if(num == 11 | num == 12 | num == 13)
+			{
+				num = 10;
+				return num;
+			}
+			// 1-10
 			return num;
 		}
 		/**
@@ -82,9 +89,14 @@ public class Card {
 		 */
 		else
 		{
-			if((num % 13) == 0)
+			/**
+			 * 14-52を引いた場合は、13で割ったあまりで
+			 * 得点をカウントする。
+			 * 引いたカードが11, 12, 13（余りは 11, 12, 0 ）の場合、10としてカウントする
+			 */
+			if((num % 13) == 0 | (num % 13) == 11 | (num % 13) == 12 )
 			{
-				cardNum = 13;
+				cardNum = 10;
 				return cardNum;
 			}
 			cardNum = num % 13;

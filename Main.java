@@ -6,8 +6,6 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import org.apache.commons.lang3.*;
-
 import blackjack.Card;
 
 
@@ -103,15 +101,7 @@ public class Main {
 		// カードが格納されているリストの添え字
 		int card_count = 8;
 		additional_drawal(card, cards, card_count, player1, player2);
-		
-//		/**
-//		 * 追加のカード引きの終了後
-//		 *  => 勝負の判定
-//		 */
-//		result_judgement(player1, player2);
-						
-		
-		
+				
 	}
 	
 	/**
@@ -198,7 +188,6 @@ public class Main {
 	public static void result_judgement(List <Integer> player1, List <Integer> player2)
 	{
 		Card card = new Card();
-//		List <Integer> cards = new ArrayList();
 		Calc_total total = new Calc_total();
 		
 		/**
