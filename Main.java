@@ -96,13 +96,19 @@ public class Main {
 		 * Calc_total.javaからメソッドを呼び出す。
 		 */
 		Calc_total total = new Calc_total();
-		total.calc_card_sum(card, player1);
+		total.calc_card_sum(card, player1, player2);
 		
 		
 		// 追加でカードを引く時
 		// カードが格納されているリストの添え字
 		int card_count = 8;
-		additional_drawal(cards, card_count, player1);
+		additional_drawal(cards, card_count, player1, player2);
+		
+		/**
+		 * 追加のカード引きの終了後
+		 *  => 勝負の判定
+		 */
+		result_judgement(player1, player2);
 						
 		
 		
@@ -114,7 +120,7 @@ public class Main {
 	 * @param card_count
 	 * @param player1
 	 */
-	public static void additional_drawal(List <Integer> cards, int card_count, List <Integer> player1) {
+	public static void additional_drawal(List <Integer> cards, int card_count, List <Integer> player1, List <Integer> player2) {
 		// 追加でカードを引くか選択する
 		System.out.println("追加でカードを引きますか?? yes => 0 / no => 1");
 		Scanner input = new Scanner(System.in);
@@ -143,7 +149,7 @@ public class Main {
 				 * playerのカードの合計値を計算する
 				 */
 				Calc_total total = new Calc_total();
-				total.calc_card_sum(drawal, player1);
+				total.calc_card_sum(drawal, player1, player2);
 				
 				// 次のカードを引くとき用
 				card_count++;
@@ -151,18 +157,7 @@ public class Main {
 				/**
 				 * 追加でカードを引く
 				 */
-				additional_drawal(cards, card_count, player1);
-			}
-			/**
-			 * 追加でカードを引かない場合
-			 */
-			else
-			{
-				/**
-				 *  実装する
-				 * 
-				 */
-				
+				additional_drawal(cards, card_count, player1, player2);
 			}
 				
 		
@@ -178,6 +173,76 @@ public class Main {
 	
 	}
 	// END OF additional_drawal
+	
+	/**
+	 * 結果を判定するメソッド
+	 */
+	public static void result_judgement(List <Integer> player1, List <Integer> player2)
+	{
+		Card card = new Card();
+//		List <Integer> cards = new ArrayList();
+		Calc_total total = new Calc_total();
+		
+		/**
+		 * Calc_total.javaからcalc_card_sum()を呼ぶ
+		 * カードの合計値を取得する
+		 */
+		Calc player_sum = total.calc_card_sum(card, player1, player2);
+		
+		
+		/**
+		 * player1の合計点のみ【21】を超えた場合
+		 */
+		if(player_sum.player1_sum > 21 && player_sum.player2_sum <= 21)
+		{
+			System.out.println("合計値が21を超えたので、手札を引くのを終了します。\nお互いの点数を開示します。\n\n");
+			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
+			System.out.println("あなたの負けです。");
+		}
+		
+		/**
+		 * player2の合計点のみ【21】を超えた場合
+		 */
+		if(player_sum.player1_sum <= 21 && player_sum.player2_sum > 21)
+		{
+			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
+			System.out.println("あなたの勝ちです。");
+		}
+		
+		/**
+		 * player1, 2の合計点が共に【21】を超える場合
+		 */
+		if(player_sum.player1_sum > 21 && player_sum.player2_sum > 21)
+		{
+			System.out.println("合計値が21を超えたので、手札を引くのを終了します。\nお互いの点数を開示します。\n\n");
+			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
+			System.out.println("引き分けです。");			
+		}
+		
+		/**
+		 * player1, 2の合計点が共に【21】以下の場合
+		 */
+		if(player_sum.player1_sum <= 21 && player_sum.player2_sum <= 21)
+		{
+			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
+			
+			// player1, 2の点数を比較
+			if(player_sum.player1_sum > player_sum.player2_sum)
+			{
+				System.out.println("あなたの勝ちです。");			
+			}
+			else if(player_sum.player1_sum < player_sum.player2_sum)
+			{
+				System.out.println("あなたの負けです。");						
+			}
+			else
+			{
+				System.out.println("引き分けです。");			
+			}
+		}
+		
+	}
+	
 	
 
 }
