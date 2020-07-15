@@ -35,11 +35,11 @@ public class Main {
 /**
  *  ** For Debug **
  */
-		System.out.println("シャッフル済カード（52枚）");
-		for(int i = 0; i < cards.size(); i++) 
-		{
-			System.out.println(cards.get(i));
-		}
+//		System.out.println("シャッフル済カード（52枚）");
+//		for(int i = 0; i < cards.size(); i++) 
+//		{
+//			System.out.println(cards.get(i));
+//		}
 		
 		List <Integer> player1 = new ArrayList();
 		List <Integer> player2 = new ArrayList();
@@ -76,7 +76,7 @@ public class Main {
 /**
  *  ** For Debug **
  */
-		System.out.println("\nプレイヤー" + PLAYERS + "名に"+ INITIAL_CARDS +"枚ずつカードを配布する。");
+//		System.out.println("\nプレイヤー" + PLAYERS + "名に"+ INITIAL_CARDS +"枚ずつカードを配布する。");
 		for(int i = 0; i < PLAYERS * INITIAL_CARDS; i++) 
 		{
 			System.out.println(cards.get(i));
@@ -102,13 +102,13 @@ public class Main {
 		// 追加でカードを引く時
 		// カードが格納されているリストの添え字
 		int card_count = 8;
-		additional_drawal(cards, card_count, player1, player2);
+		additional_drawal(card, cards, card_count, player1, player2);
 		
-		/**
-		 * 追加のカード引きの終了後
-		 *  => 勝負の判定
-		 */
-		result_judgement(player1, player2);
+//		/**
+//		 * 追加のカード引きの終了後
+//		 *  => 勝負の判定
+//		 */
+//		result_judgement(player1, player2);
 						
 		
 		
@@ -120,7 +120,7 @@ public class Main {
 	 * @param card_count
 	 * @param player1
 	 */
-	public static void additional_drawal(List <Integer> cards, int card_count, List <Integer> player1, List <Integer> player2) {
+	public static void additional_drawal(Card card, List <Integer> cards, int card_count, List <Integer> player1, List <Integer> player2) {
 		// 追加でカードを引くか選択する
 		System.out.println("追加でカードを引きますか?? yes => 0 / no => 1");
 		Scanner input = new Scanner(System.in);
@@ -150,6 +150,24 @@ public class Main {
 				 */
 				Calc_total total = new Calc_total();
 				total.calc_card_sum(drawal, player1, player2);
+			
+				
+				/**
+				 * カード合計値計算後、player1の合計値が【21】を超える場合
+				 * Calc_total.javaからcalc_card_sum()を呼ぶ
+				 * 
+				 */
+				Calc player_sum = total.calc_card_sum(card, player1, player2);
+				if(player_sum.player1_sum > 21)
+				{
+					/**
+					 * 追加のカード引きの終了後
+					 *  => 勝負の判定
+					 */
+					result_judgement(player1, player2);
+					
+					return;
+				}
 				
 				// 次のカードを引くとき用
 				card_count++;
@@ -157,7 +175,7 @@ public class Main {
 				/**
 				 * 追加でカードを引く
 				 */
-				additional_drawal(cards, card_count, player1, player2);
+				additional_drawal(card, cards, card_count, player1, player2);
 			}
 				
 		

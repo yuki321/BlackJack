@@ -19,7 +19,7 @@ public class Calc_total {
 		/**
 		 * DEBUG
 		 */
-		System.out.println(player1_card);
+//		System.out.println(player1_card);
 	
 		Calc sum = new Calc();
 		sum.player1_sum = 0;
@@ -40,7 +40,7 @@ public class Calc_total {
 		 * DEBUG用
 		 * 普段は表示しない
 		 */
-		System.out.println("player2の合計値は 【 " + sum.player2_sum + " 】 です。\n");
+//		System.out.println("player2の合計値は 【 " + sum.player2_sum + " 】 です。\n");
 				
 		return sum;
 		
