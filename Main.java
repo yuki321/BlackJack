@@ -225,60 +225,9 @@ public class Main {
 			max = Math.max(max, sum_max[i]);
 		}
 		
-		System.out.println("player2-4の最大値 = " + max);
+		System.out.println("player2-4の最大値 = " + max + "\n");
 
-		
-//		/**
-//		 * player1の合計点のみ【21】を超えた場合
-//		 */
-//		if(player_sum.player1_sum > 21 && player_sum.player2_sum <= 21)
-//		{
-//			System.out.println("合計値が21を超えたので、手札を引くのを終了します。\nお互いの点数を開示します。\n\n");
-//			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
-//			System.out.println("あなたの負けです。");
-//		}
-//		
-//		/**
-//		 * player2の合計点のみ【21】を超えた場合
-//		 */
-//		if(player_sum.player1_sum <= 21 && player_sum.player2_sum > 21)
-//		{
-//			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
-//			System.out.println("あなたの勝ちです。");
-//		}
-//		
-//		/**
-//		 * player1, 2の合計点が共に【21】を超える場合
-//		 */
-//		if(player_sum.player1_sum > 21 && player_sum.player2_sum > 21)
-//		{
-//			System.out.println("合計値が21を超えたので、手札を引くのを終了します。\nお互いの点数を開示します。\n\n");
-//			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
-//			System.out.println("引き分けです。");			
-//		}
-//		
-//		/**
-//		 * player1, 2の合計点が共に【21】以下の場合
-//		 */
-//		if(player_sum.player1_sum <= 21 && player_sum.player2_sum <= 21)
-//		{
-//			System.out.println("player2の合計値は 【 " + player_sum.player2_sum + " 】 です。\n");
-//			
-//			// player1, 2の点数を比較
-//			if(player_sum.player1_sum > player_sum.player2_sum)
-//			{
-//				System.out.println("あなたの勝ちです。");			
-//			}
-//			else if(player_sum.player1_sum < player_sum.player2_sum)
-//			{
-//				System.out.println("あなたの負けです。");						
-//			}
-//			else
-//			{
-//				System.out.println("引き分けです。");			
-//			}
-//		}
-		
+				
 		/**
 		 *  player1とplayer2-4の最大値を比較
 		 */
