@@ -230,19 +230,59 @@ public class Main {
 				
 		/**
 		 *  player1とplayer2-4の最大値を比較
+		 */	
+		
+		/**
+		 * player1の合計点のみ【21】を超えた場合
 		 */
-		if(player_sum.player1_sum > max) 
+		if(player_sum.player1_sum > 21 && max <= 21)
 		{
-			System.out.println("あなたの勝ちです。");
-		}
-		else if(player_sum.player1_sum < max)
-		{
+			System.out.println("合計値が21を超えたので、手札を引くのを終了します。\nお互いの点数を開示します。\n\n");
+			System.out.println("相手の合計値は 【 " + max + " 】 です。\n");
 			System.out.println("あなたの負けです。");
 		}
-		else
+		
+		/**
+		 * player2-4の最大値のみ【21】を超えた場合
+		 */
+		if(player_sum.player1_sum <= 21 && max > 21)
 		{
-			System.out.println("引き分けです。");	
+			System.out.println("相手の合計値は 【 " + max + " 】 です。\n");
+			System.out.println("あなたの勝ちです。");
 		}
+		
+		/**
+		 * player1の合計点, 2-4の最大値が共に【21】を超える場合
+		 */
+		if(player_sum.player1_sum > 21 && max > 21)
+		{
+			System.out.println("合計値が21を超えたので、手札を引くのを終了します。\nお互いの点数を開示します。\n\n");
+			System.out.println("相手の合計値は 【 " + max + " 】 です。\n");
+			System.out.println("引き分けです。");			
+		}
+		
+		/**
+		 * player1の合計点, 2-4の最大値が共に【21】以下の場合
+		 */
+		if(player_sum.player1_sum <= 21 && max <= 21)
+		{
+			System.out.println("相手の合計値は 【 " + max + " 】 です。\n");
+			
+			// player1, 2-4の最大値の点数を比較
+			if(player_sum.player1_sum > max)
+			{
+				System.out.println("あなたの勝ちです。");			
+			}
+			else if(player_sum.player1_sum < max)
+			{
+				System.out.println("あなたの負けです。");						
+			}
+			else
+			{
+				System.out.println("引き分けです。");			
+			}
+		}
+		
 		
 		
 	}
