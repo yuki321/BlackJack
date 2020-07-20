@@ -109,6 +109,11 @@ public class Card {
 	// 1-52‚Ì”š‚Ìsuit‚ğ”»’è‚·‚éi•ÏŠ·‚·‚éj
 	public String convert2Suit(int num) 
 	{
+		if(num <= 0)
+		{
+			return "—áŠO‚Å‚·!!";
+		}
+		
 		switch((num - 1)/ 13) 
 		{
 			// 0-12 / 13
