@@ -38,22 +38,22 @@ public class Card {
 				
 			// HEART(1)
 			case "HEART":
-				if(num % 13 == 0) cardNum = 13;
 				cardNum = num % 13;
+				if(num % 13 == 0) cardNum = 13;
 				
 				return "ハートの" + cardNum;
 							
 			// SPADE(2)
 			case "SPADE":
-				if(num % 13 == 0) cardNum = 13;
 				cardNum = num % (13 * SPADE);
+				if(num % 13 == 0) cardNum = 13;
 				
 				return "スペードの" + cardNum;
 				
 			// CRUB(3)
 			case "CRUB":
-				if(num % 13 == 0) cardNum = 13;
 				cardNum = num % (13 * CRUB);
+				if(num % 13 == 0) cardNum = 13;
 				
 				return "クローバーの" + cardNum;
 				
